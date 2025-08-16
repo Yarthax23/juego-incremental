@@ -1,18 +1,12 @@
-# Juego-incremental
+# React + Vite
 
-## Sobre el Proyecto
-Este es un proyecto personal para construir un juego incremental simple. El objetivo principal es aplicar conceptos de programación, como el manejo de estado en React, la persistencia de datos y la optimización de recursos, para crear un proyecto completo para mi portafolio.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Tecnologías Utilizadas
-- **React**: Para la interfaz de usuario.
-- **JavaScript**: Para la lógica del juego.
-- **HTML/CSS**: Para la estructura y el estilo visual.
+Currently, two official plugins are available:
 
-## Estado Actual
-El proyecto está en sus etapas iniciales de desarrollo. El siguiente paso es configurar la estructura básica con un componente de botón interactivo.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Plan Futuro
-- [ ] Implementar un botón de clic que genere un recurso.
-- [ ] Crear un sistema para comprar mejoras automáticas.
-- [ ] Implementar la persistencia de datos (guardar/cargar).
-- [ ] Mejorar la interfaz de usuario y el diseño.
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
