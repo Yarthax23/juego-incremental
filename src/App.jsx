@@ -9,15 +9,12 @@ function App() {
 
   return (
     <>
-      <div>
-        
-      </div>
       <h1>Un juego incremental</h1>
       <div>
-        Wood <Botones count={wood} setCount={setWood} />
-        Stone <Botones count={stone} setCount={setStone} />
+        Wood <Botones count={wood} setCount={setWood} aumentos={[0, 1, 3, 8]} />
+        Stone <Botones count={stone} setCount={setStone} aumentos={[1, 5, 10]} />
       </div>
-      <p className="ressources">
+      <p className="recursos">
         wood: {wood} |
         stone: {stone}
       </p>
@@ -25,21 +22,28 @@ function App() {
   )
 }
 
-function Botones({ count, setCount }) {
+function Botones({ count, setCount, aumentos }) {
   const [localCount, setLocalCount] = useState(0)
 
   return (
     <>
-      <Aumentar count={count} setCount={setCount} aumento={2} localCount={localCount} setLocalCount={setLocalCount} />
-      <Aumentar count={count} setCount={setCount} aumento={5} localCount={localCount} setLocalCount={setLocalCount} />
-      <Aumentar count={count} setCount={setCount} aumento={10} localCount={localCount} setLocalCount={setLocalCount} />
+      {aumentos.map(aumento => (
+        <Aumentar
+          count={count}
+          setCount={setCount}
+          localCount={localCount}
+          setLocalCount={setLocalCount}
+          aumento={aumento}
+        />
+      ))}
       Clicks: {localCount}
       <br/>
     </>
   )
 }
 
-function Aumentar({ count, setCount, aumento, localCount, setLocalCount }) {
+function Aumentar({ count, setCount, localCount, setLocalCount, aumento}) {
+
   return (
     <button
       onClick={() => {
