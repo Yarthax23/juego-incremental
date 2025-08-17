@@ -4,8 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [solo, setSolo] = useState(0)
+  const [wood, setWood] = useState(0)
+  const [stone, setStone] = useState(0)
 
   return (
     <>
@@ -14,29 +14,42 @@ function App() {
       </div>
       <h1>Un juego incremental</h1>
       <div>
-        <BotonSolitario count={solo} setCount={setSolo} />
-        <BotonSolitario count={count} setCount={setCount} />
-        <BotonCompartido count={count} setCount={setCount} />
-        <BotonCopyCat valorPadre={count} />
-        <BotonCopyCat valorPadre={solo} />
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        Wood <Botones count={wood} setCount={setWood} />
+        Stone <Botones count={stone} setCount={setStone} />
       </div>
-      <p className="change-log">
-        count: {count} <br/>
-        solo: {solo}
+      <p className="ressources">
+        wood: {wood} |
+        stone: {stone}
       </p>
     </>
   )
 }
 
-function BotonSolitario({count, setCount}) {
-  return <button onClick={() => setCount(count + 5)}>Solo: {count}</button>
+function Botones({ count, setCount }) {
+  const [localCount, setLocalCount] = useState(0)
+
+  return (
+    <>
+      <Aumentar count={count} setCount={setCount} aumento={2} localCount={localCount} setLocalCount={setLocalCount} />
+      <Aumentar count={count} setCount={setCount} aumento={5} localCount={localCount} setLocalCount={setLocalCount} />
+      <Aumentar count={count} setCount={setCount} aumento={10} localCount={localCount} setLocalCount={setLocalCount} />
+      Clicks: {localCount}
+      <br/>
+    </>
+  )
 }
 
-function BotonCompartido({ count, setCount }) {
-  return <button onClick={() => setCount(count + 1)}>Comp: {count}</button>
+function Aumentar({ count, setCount, aumento, localCount, setLocalCount }) {
+  return (
+    <button
+      onClick={() => {
+        setCount(count + aumento)
+        setLocalCount(localCount + 1)
+      }}
+    >
+      +{aumento}
+    </button>
+  )
 }
 
 function BotonCopyCat({ valorPadre }) {
