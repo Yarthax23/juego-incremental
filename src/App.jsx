@@ -11,8 +11,8 @@ function App() {
     <>
       <h1>Un juego incremental</h1>
       <div>
-        Wood <Botones count={wood} setCount={setWood} aumentos={[0, 1, 3, 8]} />
-        Stone <Botones count={stone} setCount={setStone} aumentos={[1, 5, 10]} />
+        Wood <Botones recurso={{ value: wood, setValue: setWood }} aumentos={[0, 1, 3, 8]} />
+        Stone <Botones recurso={{ value: stone, setValue: setStone }} aumentos={[1, 5, 10]} />
       </div>
       <p className="recursos">
         wood: {wood} |
@@ -22,15 +22,14 @@ function App() {
   )
 }
 
-function Botones({ count, setCount, aumentos }) {
+function Botones({ recurso, aumentos }) {
   const [localCount, setLocalCount] = useState(0)
 
   return (
     <>
       {aumentos.map(aumento => (
         <Aumentar
-          count={count}
-          setCount={setCount}
+          recurso={recurso}
           localCount={localCount}
           setLocalCount={setLocalCount}
           aumento={aumento}
@@ -42,12 +41,13 @@ function Botones({ count, setCount, aumentos }) {
   )
 }
 
-function Aumentar({ count, setCount, localCount, setLocalCount, aumento}) {
+function Aumentar({ recurso, localCount, setLocalCount, aumento}) {
+  const { value, setValue } = recurso
 
   return (
     <button
       onClick={() => {
-        setCount(count + aumento)
+        setValue(value + aumento)
         setLocalCount(localCount + 1)
       }}
     >
