@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <h1>Un juego incremental</h1>
-      <div>
+      <div style={{backgroundColor: 'black', color:'pink'}}>
         Wood <Botones recurso={{ value: wood, setValue: setWood }} aumentos={[0, 1, 3, 8]} />
         Stone <Botones recurso={{ value: stone, setValue: setStone }} aumentos={[1, 5, 10]} />
       </div>
@@ -45,7 +45,7 @@ function Aumentar({ recurso, localCount, setLocalCount, aumento}) {
   const { value, setValue } = recurso
 
   return (
-    <button
+    <button style={{backgroundColor: 'seashell', color:'seagreen'}}
       onClick={() => {
         setValue(value + aumento)
         setLocalCount(localCount + 1)
