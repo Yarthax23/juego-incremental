@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [solo, setSolo] = useState(0)
 
   return (
     <>
@@ -12,28 +13,30 @@ function App() {
         
       </div>
       <h1>Un juego incremental</h1>
-      <div className="card">
-        <UnBoton />
+      <div>
+        <BotonSolitario count={solo} setCount={setSolo} />
+        <BotonSolitario count={count} setCount={setCount} />
         <BotonCompartido count={count} setCount={setCount} />
         <BotonCopyCat valorPadre={count} />
+        <BotonCopyCat valorPadre={solo} />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
       <p className="change-log">
-        Componente UnBoton {count}
+        count: {count} <br/>
+        solo: {solo}
       </p>
     </>
   )
 }
 
-function UnBoton  () {
-  const [count, setCount] = useState(0)
-  return <button onClick={() => setCount(count + 5)}>Boton: {count}</button>
+function BotonSolitario({count, setCount}) {
+  return <button onClick={() => setCount(count + 5)}>Solo: {count}</button>
 }
 
 function BotonCompartido({ count, setCount }) {
-  return <button onClick={() => setCount(count + 1)}>Compartido: {count}</button>
+  return <button onClick={() => setCount(count + 1)}>Comp: {count}</button>
 }
 
 function BotonCopyCat({ valorPadre }) {
